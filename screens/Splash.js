@@ -5,7 +5,7 @@ import { getData } from "../utils/localStorage";
 
 export default function SplahScreen({ navigation }) {
   useEffect(() => {
-    getData("first_launch").then((res) => {
+    getData("first_launch1").then((res) => {
       if (res === "true") {
         getData("user").then((res) => {
           if (res) {

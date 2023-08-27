@@ -8,7 +8,7 @@ const data = [
   {
     title: "Forum",
     image:
-      "https://i.ibb.co/wJBv6Xv/manager-with-checklist-creating-event-plan-development-event-management-planning-service-how-plan-ev.jpg",
+      "https://i.ibb.co/31PzQXD/internet-troll-quarreling-upsetting-user-online-tablet-with-troll-face-internet-trolling-digital-har.jpg",
     description:
       " Fitur ini bisa membuat postingan forum yang bisa digunakan untuk ruang diskusi membahas semua hal tentang konseling yang bisa dimanfaatkan oleh mahasiswa dan juga konselor.",
   },
@@ -22,7 +22,7 @@ const data = [
   {
     title: "Chatting",
     image:
-      "https://i.ibb.co/wJBv6Xv/manager-with-checklist-creating-event-plan-development-event-management-planning-service-how-plan-ev.jpg",
+      "https://i.ibb.co/VgPr1JK/digital-marketing-online-advertising-smm-app-notification-chatting-texting-viral-content-internet-me.jpg",
     description:
       "Fitur ini bisa digunakan untuk membuat percakapan dan bisa menyimpan riwayat nya juga untuk semua hal yang memiliki topik konseling yang bisa dimanfaatkan oleh mahasiswa dan konselor.",
   },
@@ -100,7 +100,7 @@ const OnboardingScreen = () => {
     if (nextItemIndex <= lastItemIndex) {
       ref?.current?.scrollToIndex({ animated: true, index: nextItemIndex });
     } else {
-      await setData("first_launch", "true");
+      await setData("first_launch1", "true");
       getData("user").then((res) => {
         if (res) {
           navigation.replace("Home");
