@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  RefreshControl,
-  TouchableOpacity,
-  Image,
-  Dimensions,
-} from "react-native";
+import { View, Text, StyleSheet, FlatList, RefreshControl, TouchableOpacity, Image, Dimensions } from "react-native";
 import { onValue, ref } from "firebase/database";
 import { useIsFocused } from "@react-navigation/native";
 
@@ -35,18 +26,12 @@ export default function HistoryScreen({ navigation }) {
             key: key,
             ...historyList[key],
           }))
-          .filter((dataMapping) =>
-            `${dataMapping.key}`.includes(identityNumber)
-          )
+          .filter((dataMapping) => `${dataMapping.key}`.includes(identityNumber))
           .map((dataFiltered, index) => {
             const key = dataFiltered?.key;
             const userData =
-              historyList[key]?.messages?.find(
-                (msg) => msg?.user?._id === identityNumber
-              ) ||
-              historyList[key]?.messages?.find(
-                (msg) => msg?.user?.targetUser?._id === identityNumber
-              );
+              historyList[key]?.messages?.find((msg) => msg?.user?._id === identityNumber) ||
+              historyList[key]?.messages?.find((msg) => msg?.user?.targetUser?._id === identityNumber);
             return {
               key: key,
               identityNumber:
@@ -75,10 +60,8 @@ export default function HistoryScreen({ navigation }) {
     getData("user").then((res) => {
       setUserData(res);
       getListData(res);
-    });
-    setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    });
   };
 
   useEffect(() => {
@@ -91,11 +74,7 @@ export default function HistoryScreen({ navigation }) {
         {isLoading ? (
           <Skeleton />
         ) : refreshing ? (
-          <ActivityIndicator
-            size="large"
-            color="#05A0E4"
-            style={{ marginTop: 150 }}
-          />
+          <ActivityIndicator size="large" color="#05A0E4" style={{ marginTop: 150 }} />
         ) : userList.length === 0 ? (
           <View
             style={{
@@ -157,11 +136,7 @@ export default function HistoryScreen({ navigation }) {
                     />
                     <View>
                       <View style={styles.nameContainer}>
-                        <Text
-                          style={styles.nameTxt}
-                          numberOfLines={1}
-                          ellipsizeMode="tail"
-                        >
+                        <Text style={styles.nameTxt} numberOfLines={1} ellipsizeMode="tail">
                           {item.name}
                         </Text>
                       </View>

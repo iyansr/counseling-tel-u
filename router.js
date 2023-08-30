@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import OnboardingScreen from "./screens/OnboardingScreen";
+import ForumDetail from "./screens/ForumDetail";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,7 @@ export default function router() {
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="ChatDetail" component={ChatDetailScreen} options={{ title: "" }} />
+      <Stack.Screen name="ForumDetail" component={ForumDetail} options={{ title: "Forum" }} />
     </Stack.Navigator>
   );
 }

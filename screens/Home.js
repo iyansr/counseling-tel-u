@@ -6,6 +6,7 @@ import HistoryScreen from "./History";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { Text, TouchableOpacity, View, StatusBar, SafeAreaView, Image } from "react-native";
 import { removeData } from "../utils/localStorage";
+import Forum from "./Forum";
 
 const Tab = createBottomTabNavigator();
 
@@ -53,6 +54,15 @@ export default function Home({ navigation }) {
       </SafeAreaView>
 
       <Tab.Navigator initialRouteName="Profile">
+        <Tab.Screen
+          name="Forum"
+          component={Forum}
+          options={{
+            headerShown: false,
+            tabBarLabel: "Forum",
+            tabBarIcon: ({ color, size }) => <FontAwesome name="users" color={color} size={size} />,
+          }}
+        />
         <Tab.Screen
           name="Chat"
           component={ChatScreen}

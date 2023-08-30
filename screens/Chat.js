@@ -1,16 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  FlatList,
-  RefreshControl,
-  TouchableOpacity,
-  Image,
-  Dimensions,
-  TextInput,
-} from "react-native";
+import { View, Text, StyleSheet, FlatList, RefreshControl, TouchableOpacity, Image, Dimensions } from "react-native";
 import { Input, Icon } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import { onValue } from "firebase/database";
@@ -49,10 +38,8 @@ export default function ChatScreen({ navigation }) {
     getData("user").then((res) => {
       setUserData(res);
       getListData(res);
-    });
-    setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    });
   };
 
   useEffect(() => {
