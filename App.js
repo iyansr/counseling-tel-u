@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider } from "native-base";
 import Router from "./router";
 
-LogBox.ignoreLogs(["In React 18, SSRProvider"]);
+LogBox.ignoreLogs(["In React 18, SSRProvider", "Setting a timer for a long period"]);
 
 function App() {
   return (

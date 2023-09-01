@@ -6,11 +6,15 @@ import { getData, setData } from "../utils/localStorage";
 import { ActivityIndicator } from "react-native";
 import { formatDistance, fromUnixTime } from "date-fns";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useRoute } from "@react-navigation/native";
 
 const ForumDetail = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const { bottom } = useSafeAreaInsets();
+  const { id } = useRoute().params;
+
+  const path = `forum/${id}`;
 
   const [userData, setUserData] = useState(null);
 
@@ -23,14 +27,14 @@ const ForumDetail = () => {
   const [commentValue, setCommentValue] = useState("");
 
   const getForum = () => {
-    onValue(getTable("forum/0"), (snapshot) => {
+    onValue(getTable(path), (snapshot) => {
       setData(snapshot.val());
       setLoading(false);
     });
   };
 
   const onSend = async () => {
-    await update(ref(database, `forum/0`), {
+    await update(ref(database, path), {
       ...data,
       comments: [
         ...(data.comments ? data.comments : []),
@@ -93,6 +97,16 @@ const ForumDetail = () => {
             <Text mt="4" fontWeight="normal" fontSize="sm">
               {data.content}
             </Text>
+            {data.imageUrl && (
+              <Image
+                source={{ uri: data.imageUrl }}
+                alt="Image"
+                mt="4"
+                width="full"
+                borderRadius="md"
+                style={{ aspectRatio: 3 / 2 }}
+              />
+            )}
           </View>
         </View>
 
@@ -112,7 +126,7 @@ const ForumDetail = () => {
                 />
                 <VStack>
                   <Text ml="4" fontWeight="normal" fontSize="xs">
-                    {data.author.name} •{" "}
+                    {item.user.name} •{" "}
                     {formatDistance(fromUnixTime(Math.floor(item.date / 1000)), new Date(), { addSuffix: true })}
                   </Text>
                 </VStack>

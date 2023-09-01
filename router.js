@@ -9,6 +9,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import OnboardingScreen from "./screens/OnboardingScreen";
 import ForumDetail from "./screens/ForumDetail";
+import NewForum from "./screens/NewForum";
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,7 @@ export default function router() {
       <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="ChatDetail" component={ChatDetailScreen} options={{ title: "" }} />
       <Stack.Screen name="ForumDetail" component={ForumDetail} options={{ title: "Forum" }} />
+      <Stack.Screen name="NewForum" component={NewForum} options={{ title: "Buat Postingan Baru" }} />
     </Stack.Navigator>
   );
 }

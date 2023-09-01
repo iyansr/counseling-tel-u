@@ -87,7 +87,7 @@ const Forum = () => {
 
   return (
     <View flex={1}>
-      <ScrollView px="4" pt="4">
+      <ScrollView pt="4" contentContainerStyle={{ paddingHorizontal: 16 }}>
         {itemList?.map((item, index) => (
           <Pressable
             key={index}
@@ -96,6 +96,7 @@ const Forum = () => {
             borderRadius="md"
             px="4"
             py="2"
+            mb="4"
             onPress={() => {
               navigation.navigate("ForumDetail", {
                 id: item.id,
@@ -126,6 +127,17 @@ const Forum = () => {
               <Text mt="4" fontWeight="normal" fontSize="sm">
                 {item.content}
               </Text>
+
+              {item.imageUrl && (
+                <Image
+                  source={{ uri: item.imageUrl }}
+                  alt="Image"
+                  mt="4"
+                  width="full"
+                  borderRadius="md"
+                  style={{ aspectRatio: 3 / 2 }}
+                />
+              )}
             </View>
 
             <View mt="4" borderTopWidth={1} borderTopColor="gray.300" py="2">
@@ -137,7 +149,14 @@ const Forum = () => {
         ))}
       </ScrollView>
 
-      <Button position="absolute" zIndex={10} right={4} bottom={4} borderRadius="full">
+      <Button
+        position="absolute"
+        zIndex={10}
+        right={4}
+        bottom={4}
+        borderRadius="full"
+        onPress={() => navigation.navigate("NewForum")}
+      >
         <HStack alignItems="center">
           <FontAwesome name="plus-circle" size={24} color="white" />
           <Text ml="3" color="white" fontWeight="medium">
