@@ -86,7 +86,7 @@ const ForumDetail = () => {
               <Text ml="4" fontWeight="semibold" fontSize="md">
                 {data.title}
               </Text>
-              <Text ml="4" fontWeight="normal" fontSize="xs">
+              <Text ml="4" fontWeight="normal" fontSize="xs" umberOfLines={2}>
                 {data.author.name} •{" "}
                 {formatDistance(fromUnixTime(Math.floor(data.date / 1000)), new Date(), { addSuffix: true })}
               </Text>
