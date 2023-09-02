@@ -81,6 +81,21 @@ const Forum = () => {
         >
           Belum ada forum
         </Text>
+        <Button
+          position="absolute"
+          zIndex={10}
+          right={4}
+          bottom={4}
+          borderRadius="full"
+          onPress={() => navigation.navigate("NewForum")}
+        >
+          <HStack alignItems="center">
+            <FontAwesome name="plus-circle" size={24} color="white" />
+            <Text ml="3" color="white" fontWeight="medium">
+              Post
+            </Text>
+          </HStack>
+        </Button>
       </View>
     );
   }
