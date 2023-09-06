@@ -10,6 +10,8 @@ import { TouchableOpacity } from "react-native";
 import OnboardingScreen from "./screens/OnboardingScreen";
 import ForumDetail from "./screens/ForumDetail";
 import NewForum from "./screens/NewForum";
+import NewEvent from "./screens/NewEvent";
+import EventDetail from "./screens/EventDetail";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +44,8 @@ export default function router() {
       <Stack.Screen name="ChatDetail" component={ChatDetailScreen} options={{ title: "" }} />
       <Stack.Screen name="ForumDetail" component={ForumDetail} options={{ title: "Forum" }} />
       <Stack.Screen name="NewForum" component={NewForum} options={{ title: "Buat Postingan Baru" }} />
+      <Stack.Screen name="NewEvent" component={NewEvent} options={{ title: "Buat Event Baru" }} />
+      <Stack.Screen name="EventDetail" component={EventDetail} options={{ title: "Event" }} />
     </Stack.Navigator>
   );
 }
