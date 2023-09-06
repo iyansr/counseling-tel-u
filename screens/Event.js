@@ -5,11 +5,20 @@ import { getTable } from "../configs/firebaseConfig";
 import { formatDistance, fromUnixTime } from "date-fns";
 import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { getData } from "../utils/localStorage";
 
 const Event = () => {
   const [itemList, setItemList] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
+
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    getData("user").then((res) => {
+      setUserData(res);
+    });
+  }, []);
 
   const getListData = () => {
     onValue(getTable("event"), (snapshot) => {
@@ -81,21 +90,23 @@ const Event = () => {
         >
           Belum ada event
         </Text>
-        <Button
-          position="absolute"
-          zIndex={10}
-          right={4}
-          bottom={4}
-          borderRadius="full"
-          onPress={() => navigation.navigate("NewEvent")}
-        >
-          <HStack alignItems="center">
-            <FontAwesome name="plus-circle" size={24} color="white" />
-            <Text ml="3" color="white" fontWeight="medium">
-              Event
-            </Text>
-          </HStack>
-        </Button>
+        {!!userData && userData?.nik && (
+          <Button
+            position="absolute"
+            zIndex={10}
+            right={4}
+            bottom={4}
+            borderRadius="full"
+            onPress={() => navigation.navigate("NewEvent")}
+          >
+            <HStack alignItems="center">
+              <FontAwesome name="plus-circle" size={24} color="white" />
+              <Text ml="3" color="white" fontWeight="medium">
+                Event
+              </Text>
+            </HStack>
+          </Button>
+        )}
       </View>
     );
   }
@@ -159,21 +170,23 @@ const Event = () => {
         ))}
       </ScrollView>
 
-      <Button
-        position="absolute"
-        zIndex={10}
-        right={4}
-        bottom={4}
-        borderRadius="full"
-        onPress={() => navigation.navigate("NewEvent")}
-      >
-        <HStack alignItems="center">
-          <FontAwesome name="plus-circle" size={24} color="white" />
-          <Text ml="3" color="white" fontWeight="medium">
-            Event
-          </Text>
-        </HStack>
-      </Button>
+      {!!userData && userData?.nik && (
+        <Button
+          position="absolute"
+          zIndex={10}
+          right={4}
+          bottom={4}
+          borderRadius="full"
+          onPress={() => navigation.navigate("NewEvent")}
+        >
+          <HStack alignItems="center">
+            <FontAwesome name="plus-circle" size={24} color="white" />
+            <Text ml="3" color="white" fontWeight="medium">
+              Event
+            </Text>
+          </HStack>
+        </Button>
+      )}
     </View>
   );
 };
